@@ -1,10 +1,18 @@
 import inflect
+from googletrans import Translator
 
-def numero_para_extenso(numero):
+def traduzir(texto, destino='pt'):
+    translator = Translator()
+    traducao = translator.translate(texto, dest=destino)
+    return traducao.text
+
+def numeroParaExtenso(patinhos):
     p = inflect.engine()
-    extenso = p.number_to_words(numero)
+    extenso = traduzir(p.number_to_words(patinhos))
     return extenso
 
-numero = int(input("Digite um número: "))
-extenso = numero_para_extenso(numero)
-print(f'{numero} por extenso: {extenso}')
+
+patinhos = int(input("Quantos patinhos irão passear? "))
+extenso = numeroParaExtenso(patinhos)
+print(f'{patinhos} por extenso: {extenso}')
+
