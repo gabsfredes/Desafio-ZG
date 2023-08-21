@@ -11,8 +11,20 @@ def numeroParaExtenso(patinhos):
     extenso = traduzir(p.number_to_words(patinhos))
     return extenso
 
+def main():
+    while True:
+        try:
+            patinhos = int(input("Quantos patinhos irão passear? "))
+            if patinhos > 1:
+                break
+            else:
+                print("Pelo menos um (1) patinho deve ir passear")
+        except ValueError:
+            print("Entrada inválida. Deve ser um número inteiro maior ou igual que 1.")
 
-patinhos = int(input("Quantos patinhos irão passear? "))
-extenso = numeroParaExtenso(patinhos)
-print(f'{patinhos} por extenso: {extenso}')
+    patinhosExtenso = numeroParaExtenso(patinhos)
 
+    print(f'{patinhosExtenso} irão passear')
+
+if __name__ == "__main__":
+    main()
